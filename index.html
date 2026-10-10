@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عطور نادية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Playfair+Display:wght@500;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1420;
+    --ink-2: #241a28;
+    --panel: #2a1f2e;
+    --gold: #b8925a;
+    --gold-soft: #d3b483;
+    --wine: #7d2f3f;
+    --ivory: #f1e7d8;
+    --muted: #b7a897;
+    --hair: rgba(241,231,216,0.14);
+    --danger: #e08a8a;
+    --radius: 2px;
+    --font-display: 'Aref Ruqaa', 'Traditional Arabic', serif;
+    --font-body: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+  }
+  html[lang="en"] {
+    --font-display: 'Playfair Display', Georgia, serif;
+  }
+  :root[data-theme="light"] {
+    --ink: #1c1420; --ink-2: #241a28; --panel: #2a1f2e;
+    --ivory: #f1e7d8; --muted: #b7a897; --hair: rgba(241,231,216,0.14);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --ink: #1c1420; --ink-2: #241a28; --panel: #2a1f2e;
+      --ivory: #f1e7d8; --muted: #b7a897; --hair: rgba(241,231,216,0.14);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--ivory);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.25; }
+
+  header.site {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(28,20,32,0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hair);
+  }
+  .nav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0; gap: 20px;
+  }
+  .logo { font-family: var(--font-display); font-size: 26px; color: var(--ivory); letter-spacing: 0.5px; white-space: nowrap; }
+  .logo span { color: var(--gold-soft); }
+  nav.links { display: flex; gap: 36px; }
+  nav.links a {
+    font-size: 15px; color: var(--muted);
+    padding-bottom: 4px; border-bottom: 1px solid transparent;
+    transition: color .25s, border-color .25s;
+  }
+  nav.links a:hover { color: var(--ivory); border-color: var(--gold); }
+  .head-actions { display: flex; align-items: center; gap: 14px; }
+  .lang-btn {
+    background: none; border: 1px solid var(--hair); color: var(--ivory);
+    font-family: var(--font-body); font-size: 13px; padding: 8px 14px;
+    border-radius: var(--radius); cursor: pointer; transition: border-color .25s;
+  }
+  .lang-btn:hover { border-color: var(--gold); }
+  .cart-btn {
+    position: relative; background: none; border: 1px solid var(--hair);
+    color: var(--ivory); width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    transition: border-color .25s, background .25s;
+    font-family: var(--font-body);
+  }
+  .cart-btn:hover { border-color: var(--gold); background: rgba(184,146,90,0.1); }
+  .cart-count {
+    position: absolute; top: -6px; inset-inline-start: -6px;
+    background: var(--wine); color: var(--ivory); font-size: 11px;
+    min-width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; padding: 0 3px;
+  }
+  .menu-toggle { display: none; background: none; border: none; color: var(--ivory); font-size: 24px; cursor: pointer; }
+
+  .hero {
+    display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center;
+    gap: 40px; padding: 88px 0 96px;
+    position: relative;
+  }
+  .hero-copy .eyebrow {
+    color: var(--gold-soft); font-size: 14px; letter-spacing: 1px; margin-bottom: 18px;
+  }
+  .hero-copy h1 {
+    font-size: 60px; color: var(--ivory); margin-bottom: 22px;
+  }
+  .hero-copy p.lede {
+    font-size: 18px; color: var(--muted); max-width: 46ch; margin-bottom: 34px;
+  }
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: #24170f;
+    padding: 15px 34px; border-radius: var(--radius); font-size: 15px;
+    font-weight: 700; cursor: pointer; border: 1px solid var(--gold);
+    transition: background .25s, transform .2s; font-family: var(--font-body);
+  }
+  .btn-primary:hover { background: var(--gold-soft); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-ghost {
+    display: inline-block; background: transparent; color: var(--ivory);
+    padding: 14px 30px; border-radius: var(--radius); font-size: 15px;
+    border: 1px solid var(--hair); margin-inline-start: 14px; cursor: pointer;
+    transition: border-color .25s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); }
+
+  .hero-art { display: flex; justify-content: center; }
+  .hero-art svg { width: 100%; max-width: 340px; height: auto; }
+
+  .section-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 44px; flex-wrap: wrap; gap: 14px; }
+  .section-head h2 { font-size: 38px; color: var(--ivory); }
+  .section-head p { color: var(--muted); max-width: 42ch; font-size: 15px; }
+
+  section { padding: 88px 0; border-top: 1px solid var(--hair); }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--hair);
+    padding: 30px 26px 26px; display: flex; flex-direction: column;
+    transition: border-color .25s, transform .3s;
+  }
+  .card:hover { border-color: var(--gold); }
+  .card .bottle { align-self: center; width: 108px; height: 168px; margin-bottom: 22px; }
+  .card .family { font-size: 12px; color: var(--gold-soft); letter-spacing: 0.5px; margin-bottom: 8px; }
+  .card h3 { font-size: 24px; color: var(--ivory); margin-bottom: 10px; }
+  .card .notes { color: var(--muted); font-size: 14px; margin-bottom: 20px; flex-grow: 1; }
+  .card .row {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--hair); padding-top: 18px;
+  }
+  .card .price { font-size: 19px; color: var(--gold-soft); font-family: var(--font-display); }
+  .add-btn {
+    background: transparent; border: 1px solid var(--gold); color: var(--gold-soft);
+    padding: 9px 16px; font-size: 13px; border-radius: var(--radius); cursor: pointer;
+    transition: background .2s, color .2s; font-family: var(--font-body);
+  }
+  .add-btn:hover { background: var(--gold); color: #24170f; }
+  .add-btn.added { background: var(--wine); border-color: var(--wine); color: var(--ivory); }
+
+  .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: center; }
+  .story blockquote {
+    font-family: var(--font-display); font-size: 30px; color: var(--ivory);
+    line-height: 1.6; margin-bottom: 20px;
+  }
+  .story cite { color: var(--gold-soft); font-style: normal; font-size: 14px; }
+  .story-art svg { width: 100%; height: auto; }
+  .story-text p { color: var(--muted); font-size: 16px; max-width: 60ch; }
+
+  footer { border-top: 1px solid var(--hair); padding: 70px 0 34px; }
+  .foot-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; margin-bottom: 56px; }
+  .foot-top h2 { font-size: 30px; color: var(--ivory); margin-bottom: 16px; }
+  .foot-top p { color: var(--muted); max-width: 44ch; margin-bottom: 26px; }
+  .subscribe { display: flex; gap: 0; max-width: 420px; }
+  .subscribe input {
+    flex: 1; background: var(--panel); border: 1px solid var(--hair); border-inline-end: none;
+    color: var(--ivory); padding: 14px 16px; font-family: var(--font-body); font-size: 14px;
+  }
+  .subscribe input:focus { outline: 1px solid var(--gold); outline-offset: -1px; }
+  .subscribe button {
+    background: var(--gold); border: 1px solid var(--gold); color: #24170f;
+    padding: 0 22px; font-weight: 700; cursor: pointer; font-family: var(--font-body); font-size: 14px;
+  }
+  .foot-cols { display: flex; gap: 46px; justify-content: flex-end; flex-wrap: wrap; }
+  .foot-cols h4 { color: var(--gold-soft); font-size: 14px; margin-bottom: 14px; font-weight: 500; }
+  .foot-cols ul { list-style: none; }
+  .foot-cols li { margin-bottom: 10px; }
+  .foot-cols a { color: var(--muted); font-size: 14px; }
+  .foot-cols a:hover { color: var(--ivory); }
+  .pay-icons { display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap; }
+  .pay-icons span { border: 1px solid var(--hair); border-radius: var(--radius); padding: 5px 9px; font-size: 12px; color: var(--muted); }
+  .foot-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--hair); padding-top: 26px; color: var(--muted); font-size: 13px; flex-wrap: wrap; gap: 10px;
+  }
+  .sub-note { font-size: 12px; color: var(--muted); margin-top: 8px; min-height: 16px; }
+
+  .overlay {
+    position: absolute; inset: 0; background: rgba(10,6,12,0.6);
+    opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 50;
+  }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: absolute; top: 0; bottom: 0; left: 0; width: 400px; max-width: 90vw;
+    background: var(--ink-2); border-right: 1px solid var(--hair);
+    transform: translateX(-102%); transition: transform .35s ease; z-index: 51;
+    display: flex; flex-direction: column;
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 26px; border-bottom: 1px solid var(--hair);
+  }
+  .drawer-head h3 { font-size: 22px; color: var(--ivory); }
+  .drawer-close { background: none; border: none; color: var(--muted); font-size: 22px; cursor: pointer; }
+  .drawer-close:hover { color: var(--ivory); }
+  .drawer-items { flex: 1; overflow-y: auto; padding: 20px 26px; }
+  .cart-empty { color: var(--muted); font-size: 14px; text-align: center; margin-top: 60px; }
+  .cart-item {
+    display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--hair);
+  }
+  .cart-item .mini-bottle { width: 40px; height: 62px; flex-shrink: 0; }
+  .cart-item .ci-info { flex: 1; }
+  .cart-item .ci-info h5 { font-size: 15px; color: var(--ivory); margin-bottom: 4px; font-weight: 500; }
+  .cart-item .ci-info .ci-price { color: var(--gold-soft); font-size: 13px; }
+  .qty-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+  .qty-row button {
+    width: 24px; height: 24px; border: 1px solid var(--hair); background: none; color: var(--ivory);
+    border-radius: 50%; cursor: pointer; font-size: 13px; line-height: 1;
+  }
+  .qty-row button:hover { border-color: var(--gold); }
+  .qty-row .remove { border: none; color: var(--muted); font-size: 12px; margin-inline-start: 10px; text-decoration: underline; width: auto; height: auto; border-radius: 0; }
+  .drawer-foot { border-top: 1px solid var(--hair); padding: 20px 26px 26px; }
+  .pay-title { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .pay-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+  .pay-option {
+    display: flex; align-items: center; gap: 10px; border: 1px solid var(--hair);
+    border-radius: var(--radius); padding: 10px 12px; cursor: pointer; transition: border-color .2s;
+    font-size: 14px; color: var(--ivory);
+  }
+  .pay-option:hover { border-color: var(--gold); }
+  .pay-option input { accent-color: var(--gold); }
+  .pay-option svg { flex-shrink: 0; }
+  .pay-option.selected { border-color: var(--gold); background: rgba(184,146,90,0.08); }
+  .pay-error { color: var(--danger); font-size: 12px; margin-bottom: 10px; min-height: 14px; }
+  .total-row { display: flex; justify-content: space-between; font-size: 17px; color: var(--ivory); margin-bottom: 16px; }
+  .total-row .amt { font-family: var(--font-display); color: var(--gold-soft); }
+  .checkout-btn { width: 100%; }
+  .checkout-msg { text-align: center; font-size: 13px; color: var(--gold-soft); margin-top: 12px; min-height: 16px; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding: 60px 0 70px; }
+    .hero-copy p.lede { margin-inline: auto; }
+    .hero-copy h1 { font-size: 42px; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .story { grid-template-columns: 1fr; }
+    .foot-top { grid-template-columns: 1fr; }
+    .foot-cols { justify-content: flex-start; }
+    nav.links { display: none; }
+    .menu-toggle { display: block; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    .grid { grid-template-columns: 1fr; }
+    .foot-cols { flex-direction: column; gap: 26px; }
+    .drawer { width: 100vw; max-width: 100vw; }
+    .hero-copy h1 { font-size: 34px; }
+    .section-head h2 { font-size: 28px; }
+    .lang-btn { padding: 7px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <div class="logo">عطور <span>نادية</span></div>
+    <nav class="links">
+      <a href="#collection" data-i18n="navCollection">المجموعة</a>
+      <a href="#story" data-i18n="navStory">قصتنا</a>
+      <a href="#contact" data-i18n="navContact">تواصل معنا</a>
+    </nav>
+    <div class="head-actions">
+      <button class="lang-btn" id="langBtn">English</button>
+      <button class="cart-btn" id="cartBtn" data-i18n-aria="cartAria" aria-label="سلة المشتريات">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="القائمة">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none; padding-top:88px;">
+    <div class="wrap hero" style="border-top:none; padding:0;">
+      <div class="hero-copy">
+        <div class="eyebrow" data-i18n="heroEyebrow">عطور مركّزة صُنعت يدويًا في قلب السودان</div>
+        <h1><span data-i18n="heroTitle1">رائحة تُروى</span><br><span data-i18n="heroTitle2">لا تُنسى</span></h1>
+        <p class="lede" data-i18n="heroLede">تحمل كل قارورة من عطور نادية حكاية من العود والعنبر والصمغ العربي السوداني، مزجت بأناة في الخرطوم لتبقى أثرًا يرافقك من الصباح حتى آخر الليل.</p>
+        <div>
+          <a href="#collection" class="btn-primary" data-i18n="btnDiscover">اكتشفي المجموعة</a>
+          <a href="#story" class="btn-ghost" data-i18n="btnStory">قصة العلامة</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 220 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="قارورة عطر أنيقة">
+          <ellipse cx="110" cy="322" rx="70" ry="10" fill="#000" opacity="0.25"/>
+          <rect x="90" y="20" width="40" height="26" rx="4" fill="none" stroke="#b8925a" stroke-width="1.6"/>
+          <rect x="95" y="10" width="30" height="16" rx="3" fill="#b8925a"/>
+          <path d="M70 46 h80 a10 10 0 0 1 10 10 v190 a34 34 0 0 1 -34 34 h-32 a34 34 0 0 1 -34 -34 v-190 a10 10 0 0 1 10 -10 z" fill="#2a1f2e" stroke="#d3b483" stroke-width="1.6"/>
+          <path d="M70 100 h80 v146 a34 34 0 0 1 -34 34 h-12 a34 34 0 0 1 -34 -34 z" fill="#7d2f3f" opacity="0.55"/>
+          <line x1="70" y1="140" x2="150" y2="140" stroke="#d3b483" stroke-width="0.6" opacity="0.5"/>
+          <line x1="70" y1="180" x2="150" y2="180" stroke="#d3b483" stroke-width="0.6" opacity="0.5"/>
+          <text x="110" y="230" text-anchor="middle" font-family="Aref Ruqaa, serif" font-size="20" fill="#f1e7d8">نادية</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="collection">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="collectionTitle">المجموعة الموقّعة</h2>
+        <p data-i18n="collectionDesc">ست عطور تمثّل أطياف رائحتنا، من العود الشرقي الثقيل إلى المسك الأبيض الخفيف.</p>
+      </div>
+      <div class="grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="wrap story">
+      <div class="story-art">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="زخرفة عربية">
+          <circle cx="150" cy="150" r="110" fill="none" stroke="#b8925a" stroke-width="1"/>
+          <circle cx="150" cy="150" r="82" fill="none" stroke="#7d2f3f" stroke-width="1"/>
+          <g stroke="#d3b483" stroke-width="1" fill="none">
+            <path d="M150 40 L150 260"/>
+            <path d="M40 150 L260 150"/>
+            <path d="M78 78 L222 222"/>
+            <path d="M222 78 L78 222"/>
+          </g>
+          <circle cx="150" cy="150" r="28" fill="#7d2f3f" opacity="0.5"/>
+          <circle cx="150" cy="150" r="6" fill="#b8925a"/>
+        </svg>
+      </div>
+      <div class="story-text">
+        <blockquote data-i18n="storyQuote">"لم نُرد أن نصنع عطرًا فحسب، بل ذاكرة تُفتح كلما فُتح الغطاء."</blockquote>
+        <cite data-i18n="storyCite">— نادية الحمود، مؤسسة العلامة</cite>
+        <p style="margin-top:26px;" data-i18n="storyP1">بدأت الفكرة من مجلس جدّتي وعبير بخور العود السوداني الممزوج بماء الورد. اليوم، نعمل مع معطّرين في الخرطوم على تركيز كل خلطة يدويًا بدفعات محدودة، ونختار الخامات من دارفور وكسلا والهند لنحافظ على توازن دقيق بين الأصالة والحداثة.</p>
+        <p style="margin-top:16px;" data-i18n="storyP2">كل قارورة تُصنع وتُعبّأ وتُختم يدويًا في ورشتنا بالسودان، وتصل إليك في علبة قابلة لإعادة الاستخدام.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="wrap">
+      <div class="foot-top">
+        <div>
+          <h2 data-i18n="newsletterTitle">كوني أول من يعلم</h2>
+          <p data-i18n="newsletterDesc">اشتركي في نشرتنا لتصلك إصدارات محدودة وعروض خاصة قبل الجميع.</p>
+          <form class="subscribe" id="subForm">
+            <input type="email" required id="subEmail" data-i18n-placeholder="emailPlaceholder" placeholder="بريدك الإلكتروني">
+            <button type="submit" data-i18n="subscribeBtn">اشتراك</button>
+          </form>
+          <div class="sub-note" id="subNote"></div>
+        </div>
+        <div class="foot-cols">
+          <div>
+            <h4 data-i18n="footShop">المتجر</h4>
+            <ul>
+              <li><a href="#collection" data-i18n="navCollection">المجموعة</a></li>
+              <li><a href="#story" data-i18n="navStory">قصتنا</a></li>
+              <li><a href="#" id="footCartLink" data-i18n="cartTitle">سلتك</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 data-i18n="footContact">تواصل</h4>
+            <ul>
+              <li><a href="mailto:hello@nadia-perfumes.example">hello@nadia-perfumes.example</a></li>
+              <li><a href="#" data-i18n="footLocation">الخرطوم، السودان</a></li>
+              <li><a href="#" data-i18n="footFaq">الأسئلة الشائعة</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 data-i18n="footPayment">طرق الدفع</h4>
+            <div class="pay-icons">
+              <span data-i18n="payCod">الدفع عند الاستلام</span>
+              <span data-i18n="payBank">بنكك</span>
+              <span data-i18n="payZain">زين كاش</span>
+              <span data-i18n="payCard">بطاقة</span>
+            </div>
+          </div>
+          <div>
+            <h4 data-i18n="footFollow">تابعينا</h4>
+            <ul>
+              <li><a href="https://www.instagram.com/nadiasperfumecart" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="https://www.tiktok.com/@nadiasperfumecart" target="_blank" rel="noopener">TikTok</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span data-i18n="copyright">© 2026 عطور نادية. جميع الحقوق محفوظة.</span>
+        <span data-i18n="madeIn">صُنع بحب في السودان</span>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="سلة المشتريات">
+  <div class="drawer-head">
+    <h3 data-i18n="cartTitle">سلتك</h3>
+    <button class="drawer-close" id="drawerClose" aria-label="إغلاق">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="pay-title" data-i18n="choosePayment">اختاري طريقة الدفع</div>
+    <div class="pay-options" id="payOptions"></div>
+    <div class="pay-error" id="payError"></div>
+    <div class="total-row"><span data-i18n="total">الإجمالي</span><span class="amt" id="cartTotal">0 ر.س</span></div>
+    <button class="btn-primary checkout-btn" id="checkoutBtn" data-i18n="checkout">إتمام الطلب</button>
+    <div class="checkout-msg" id="checkoutMsg"></div>
+  </div>
+</aside>
+
+<script>
+(function(){
+
+  var translations = {
+    ar: {
+      navCollection: 'المجموعة', navStory: 'قصتنا', navContact: 'تواصل معنا',
+      cartAria: 'سلة المشتريات',
+      heroEyebrow: 'عطور مركّزة صُنعت يدويًا في قلب السودان',
+      heroTitle1: 'رائحة تُروى', heroTitle2: 'لا تُنسى',
+      heroLede: 'تحمل كل قارورة من عطور نادية حكاية من العود والعنبر والصمغ العربي السوداني، مزجت بأناة في الخرطوم لتبقى أثرًا يرافقك من الصباح حتى آخر الليل.',
+      btnDiscover: 'اكتشفي المجموعة', btnStory: 'قصة العلامة',
+      collectionTitle: 'المجموعة الموقّعة',
+      collectionDesc: 'ست عطور تمثّل أطياف رائحتنا، من العود الشرقي الثقيل إلى المسك الأبيض الخفيف.',
+      addToCart: 'أضيفي إلى السلة', added: 'أُضيفت ✓',
+      currency: 'ر.س', currencyLocale: 'ar-SD',
+      storyQuote: '"لم نُرد أن نصنع عطرًا فحسب، بل ذاكرة تُفتح كلما فُتح الغطاء."',
+      storyCite: '— نادية الحمود، مؤسسة العلامة',
+      storyP1: 'بدأت الفكرة من مجلس جدّتي وعبير بخور العود السوداني الممزوج بماء الورد. اليوم، نعمل مع معطّرين في الخرطوم على تركيز كل خلطة يدويًا بدفعات محدودة، ونختار الخامات من دارفور وكسلا والهند لنحافظ على توازن دقيق بين الأصالة والحداثة.',
+      storyP2: 'كل قارورة تُصنع وتُعبّأ وتُختم يدويًا في ورشتنا بالسودان، وتصل إليك في علبة قابلة لإعادة الاستخدام.',
+      newsletterTitle: 'كوني أول من يعلم',
+      newsletterDesc: 'اشتركي في نشرتنا لتصلك إصدارات محدودة وعروض خاصة قبل الجميع.',
+      emailPlaceholder: 'بريدك الإلكتروني', subscribeBtn: 'اشتراك',
+      subscribedMsg: 'تم الاشتراك بنجاح، شكرًا لانضمامك إلينا.',
+      footShop: 'المتجر', footContact: 'تواصل', footFaq: 'الأسئلة الشائعة',
+      footLocation: 'الخرطوم، السودان', footPayment: 'طرق الدفع', footFollow: 'تابعينا',
+      payCod: 'الدفع عند الاستلام', payBank: 'بنكك', payZain: 'زين كاش', payCard: 'بطاقة',
+      payCodFull: 'الدفع عند الاستلام', payBankFull: 'تحويل بنكي (بنكك)', payZainFull: 'محفظة زين كاش', payCardFull: 'بطاقة ائتمان',
+      copyright: '© 2026 عطور نادية. جميع الحقوق محفوظة.', madeIn: 'صُنع بحب في السودان',
+      cartTitle: 'سلتك',
+      cartEmpty: 'سلتك فارغة حاليًا، اختاري عطرك المفضل من المجموعة.',
+      total: 'الإجمالي', checkout: 'إتمام الطلب',
+      choosePayment: 'اختاري طريقة الدفع',
+      paymentRequired: 'يرجى اختيار طريقة الدفع أولًا.',
+      emptyCartMsg: 'أضيفي عطرًا إلى السلة أولًا.',
+      checkoutSuccess: 'شكرًا لك! سيتم التواصل معك لتأكيد الطلب عبر {method}. هذا عرض توضيحي — لإتمام الشراء الفعلي يلزم ربط بوابة دفع.',
+      remove: 'إزالة', langBtnLabel: 'English'
+    },
+    en: {
+      navCollection: 'Collection', navStory: 'Our story', navContact: 'Contact',
+      cartAria: 'Shopping cart',
+      heroEyebrow: 'Handcrafted fragrances made in the heart of Sudan',
+      heroTitle1: 'A scent worth', heroTitle2: 'telling',
+      heroLede: 'Every Nadia Perfumes bottle carries a story of oud, amber, and Sudanese gum arabic, blended with patience in Khartoum into a trail that stays with you from morning until the last hour of night.',
+      btnDiscover: 'Discover the collection', btnStory: 'Our story',
+      collectionTitle: 'The signature collection',
+      collectionDesc: 'Six fragrances spanning our range, from heavy oriental oud to light white musk.',
+      addToCart: 'Add to cart', added: 'Added \u2713',
+      currency: 'SAR', currencyLocale: 'en-US',
+      storyQuote: '"We didn\u2019t want to make just a perfume, but a memory that opens each time the cap does."',
+      storyCite: '\u2014 Nadia Al-Hamoud, Founder',
+      storyP1: 'The idea began in my grandmother\u2019s sitting room, with the scent of Sudanese oud incense mixed with rosewater. Today we work with perfumers in Khartoum to hand-blend every formula in small batches, sourcing materials from Darfur, Kassala and India to balance heritage with modernity.',
+      storyP2: 'Every bottle is made, filled and sealed by hand in our Sudan workshop, and arrives in reusable packaging.',
+      newsletterTitle: 'Be the first to know',
+      newsletterDesc: 'Subscribe to our newsletter for limited editions and special offers before anyone else.',
+      emailPlaceholder: 'Your email address', subscribeBtn: 'Subscribe',
+      subscribedMsg: 'You\u2019re subscribed \u2014 thank you for joining us.',
+      footShop: 'Shop', footContact: 'Contact', footFaq: 'FAQ',
+      footLocation: 'Khartoum, Sudan', footPayment: 'Payment methods', footFollow: 'Follow us',
+      payCod: 'Cash on delivery', payBank: 'Bankak', payZain: 'Zain Cash', payCard: 'Card',
+      payCodFull: 'Cash on delivery', payBankFull: 'Bank transfer (Bankak)', payZainFull: 'Zain Cash wallet', payCardFull: 'Credit / debit card',
+      copyright: '\u00a9 2026 Nadia Perfumes. All rights reserved.', madeIn: 'Made with love in Sudan',
+      cartTitle: 'Your cart',
+      cartEmpty: 'Your cart is empty \u2014 pick your favorite scent from the collection.',
+      total: 'Total', checkout: 'Place order',
+      choosePayment: 'Choose a payment method',
+      paymentRequired: 'Please choose a payment method first.',
+      emptyCartMsg: 'Add a fragrance to your cart first.',
+      checkoutSuccess: 'Thank you! We\u2019ll contact you to confirm your order via {method}. This is a demo \u2014 a real checkout needs a connected payment gateway.',
+      remove: 'Remove', langBtnLabel: 'العربية'
+    }
+  };
+
+  var products = [
+    { id: 'p1', price: 450, liquid: '#7d2f3f',
+      name: { ar: 'عبير الليل', en: 'Night Bloom' },
+      family: { ar: 'شرقي عودي', en: 'Oriental oud' },
+      notes: { ar: 'عود · عنبر · فانيليا', en: 'Oud · Amber · Vanilla' } },
+    { id: 'p2', price: 320, liquid: '#8a8f6e',
+      name: { ar: 'نسيم ياسمين', en: 'Jasmine Breeze' },
+      family: { ar: 'زهري أبيض', en: 'White floral' },
+      notes: { ar: 'ياسمين · خزامى · مسك', en: 'Jasmine · Lavender · Musk' } },
+    { id: 'p3', price: 480, liquid: '#b8925a',
+      name: { ar: 'ذهب الصحراء', en: 'Desert Gold' },
+      family: { ar: 'عنبري توابلي', en: 'Amber spice' },
+      notes: { ar: 'زعفران · دارسين · صندل', en: 'Saffron · Cinnamon · Sandalwood' } },
+    { id: 'p4', price: 590, liquid: '#9c3a4f',
+      name: { ar: 'وردة نادية', en: 'Nadia Rose' },
+      family: { ar: 'وردي عودي — توقيعنا', en: 'Rose oud \u2014 our signature' },
+      notes: { ar: 'ورد طائفي · عود · عنبر', en: 'Taif rose · Oud · Amber' } },
+    { id: 'p5', price: 280, liquid: '#c7b79a',
+      name: { ar: 'لمسة حرير', en: 'Silk Touch' },
+      family: { ar: 'مسكي خفيف', en: 'Light musk' },
+      notes: { ar: 'تفاح أخضر · ياسمين · مسك أبيض', en: 'Green apple · Jasmine · White musk' } },
+    { id: 'p6', price: 410, liquid: '#a9702f',
+      name: { ar: 'سرّ الكهرمان', en: 'Amber Secret' },
+      family: { ar: 'كهرماني حلو', en: 'Sweet amber' },
+      notes: { ar: 'كهرمان · فانيليا · خشب الصندل', en: 'Amber · Vanilla · Sandalwood' } }
+  ];
+
+  var paymentMethods = [
+    { id: 'cod', icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>' },
+    { id: 'bank', icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18"/><path d="M4 21V10"/><path d="M20 21V10"/><path d="M2 10l10-6 10 6"/><path d="M8 21v-6"/><path d="M16 21v-6"/></svg>' },
+    { id: 'zain', icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>' },
+    { id: 'card', icon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>' }
+  ];
+
+  var lang = 'ar';
+  var selectedPayment = null;
+
+  function t(key){ return translations[lang][key]; }
+
+  function applyStaticTranslations(){
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if (translations[lang][key] !== undefined) el.textContent = translations[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (translations[lang][key] !== undefined) el.placeholder = translations[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-aria');
+      if (translations[lang][key] !== undefined) el.setAttribute('aria-label', translations[lang][key]);
+    });
+    document.getElementById('langBtn').textContent = t('langBtnLabel');
+  }
+
+  function bottleSVG(color, cls){
+    return '<svg class="' + (cls || 'bottle') + '" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="perfume bottle">' +
+      '<rect x="48" y="8" width="24" height="16" rx="2" fill="none" stroke="#d3b483" stroke-width="1.4"/>' +
+      '<rect x="51" y="2" width="18" height="9" rx="2" fill="#b8925a"/>' +
+      '<path d="M38 24 h44 a7 7 0 0 1 7 7 v104 a20 20 0 0 1 -20 20 h-18 a20 20 0 0 1 -20 -20 v-104 a7 7 0 0 1 7 -7 z" fill="#241a28" stroke="#d3b483" stroke-width="1.3"/>' +
+      '<path d="M38 66 h44 v65 a20 20 0 0 1 -20 20 h-4 a20 20 0 0 1 -20 -20 z" fill="' + color + '" opacity="0.68"/>' +
+      '</svg>';
+  }
+
+  function renderProducts(){
+    var grid = document.getElementById('productGrid');
+    grid.innerHTML = '';
+    products.forEach(function(p){
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML =
+        bottleSVG(p.liquid) +
+        '<div class="family">' + p.family[lang] + '</div>' +
+        '<h3>' + p.name[lang] + '</h3>' +
+        '<div class="notes">' + p.notes[lang] + '</div>' +
+        '<div class="row">' +
+          '<span class="price">' + p.price + ' ' + t('currency') + '</span>' +
+          '<button class="add-btn" data-id="' + p.id + '">' + t('addToCart') + '</button>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+  }
+
+  function renderPaymentOptions(){
+    var wrap = document.getElementById('payOptions');
+    wrap.innerHTML = '';
+    paymentMethods.forEach(function(m){
+      var label = document.createElement('label');
+      label.className = 'pay-option' + (selectedPayment === m.id ? ' selected' : '');
+      label.innerHTML =
+        '<input type="radio" name="paymethod" value="' + m.id + '"' + (selectedPayment === m.id ? ' checked' : '') + '>' +
+        m.icon +
+        '<span>' + t('pay' + m.id.charAt(0).toUpperCase() + m.id.slice(1) + 'Full') + '</span>';
+      wrap.appendChild(label);
+    });
+  }
+
+  var cart = [];
+  try {
+    var saved = localStorage.getItem('nadia-cart');
+    if (saved) cart = JSON.parse(saved);
+  } catch(e) { cart = []; }
+
+  function saveCart(){
+    try { localStorage.setItem('nadia-cart', JSON.stringify(cart)); } catch(e) {}
+  }
+
+  function findProduct(id){
+    for (var i=0;i<products.length;i++) if (products[i].id===id) return products[i];
+    return null;
+  }
+
+  function renderCart(){
+    var itemsEl = document.getElementById('drawerItems');
+    var countEl = document.getElementById('cartCount');
+    var totalEl = document.getElementById('cartTotal');
+    var totalQty = 0, totalPrice = 0;
+    itemsEl.innerHTML = '';
+
+    if (cart.length === 0){
+      itemsEl.innerHTML = '<div class="cart-empty">' + t('cartEmpty') + '</div>';
+    } else {
+      cart.forEach(function(item){
+        var p = findProduct(item.id);
+        if (!p) return;
+        totalQty += item.qty;
+        totalPrice += item.qty * p.price;
+        var row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML =
+          bottleSVG(p.liquid, 'mini-bottle') +
+          '<div class="ci-info">' +
+            '<h5>' + p.name[lang] + '</h5>' +
+            '<div class="ci-price">' + p.price + ' ' + t('currency') + '</div>' +
+            '<div class="qty-row">' +
+              '<button data-act="dec" data-id="' + p.id + '">\u2212</button>' +
+              '<span>' + item.qty + '</span>' +
+              '<button data-act="inc" data-id="' + p.id + '">+</button>' +
+              '<button class="remove" data-act="rm" data-id="' + p.id + '">' + t('remove') + '</button>' +
+            '</div>' +
+          '</div>';
+        itemsEl.appendChild(row);
+      });
+    }
+    countEl.textContent = totalQty;
+    totalEl.textContent = totalPrice.toLocaleString(t('currencyLocale')) + ' ' + t('currency');
+    saveCart();
+  }
+
+  function fullRender(){
+    applyStaticTranslations();
+    renderProducts();
+    renderPaymentOptions();
+    renderCart();
+    document.getElementById('payError').textContent = '';
+    document.getElementById('checkoutMsg').textContent = '';
+  }
+
+  document.getElementById('langBtn').addEventListener('click', function(){
+    lang = lang === 'ar' ? 'en' : 'ar';
+    fullRender();
+  });
+
+  document.getElementById('drawerItems').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-act]');
+    if (!btn) return;
+    var id = btn.getAttribute('data-id');
+    var act = btn.getAttribute('data-act');
+    var item = cart.find(function(c){ return c.id === id; });
+    if (!item) return;
+    if (act === 'inc') item.qty++;
+    if (act === 'dec') item.qty = Math.max(1, item.qty - 1);
+    if (act === 'rm') cart = cart.filter(function(c){ return c.id !== id; });
+    renderCart();
+  });
+
+  document.getElementById('productGrid').addEventListener('click', function(e){
+    var btn = e.target.closest('.add-btn');
+    if (!btn) return;
+    var id = btn.getAttribute('data-id');
+    var existing = cart.find(function(c){ return c.id === id; });
+    if (existing) existing.qty++;
+    else cart.push({ id: id, qty: 1 });
+    renderCart();
+    btn.classList.add('added');
+    var original = btn.textContent;
+    btn.textContent = t('added');
+    setTimeout(function(){ btn.classList.remove('added'); btn.textContent = t('addToCart'); }, 1200);
+    openDrawer();
+  });
+
+  document.getElementById('payOptions').addEventListener('change', function(e){
+    if (e.target.name !== 'paymethod') return;
+    selectedPayment = e.target.value;
+    document.getElementById('payError').textContent = '';
+    renderPaymentOptions();
+  });
+
+  var overlay = document.getElementById('overlay');
+  var drawer = document.getElementById('drawer');
+  function openDrawer(){ overlay.classList.add('open'); drawer.classList.add('open'); }
+  function closeDrawer(){ overlay.classList.remove('open'); drawer.classList.remove('open'); }
+  document.getElementById('cartBtn').addEventListener('click', openDrawer);
+  document.getElementById('footCartLink').addEventListener('click', function(e){ e.preventDefault(); openDrawer(); });
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  document.getElementById('checkoutBtn').addEventListener('click', function(){
+    var msg = document.getElementById('checkoutMsg');
+    var payErr = document.getElementById('payError');
+    payErr.textContent = '';
+    msg.textContent = '';
+    if (cart.length === 0){
+      msg.textContent = t('emptyCartMsg');
+      return;
+    }
+    if (!selectedPayment){
+      payErr.textContent = t('paymentRequired');
+      return;
+    }
+    var methodLabel = t('pay' + selectedPayment.charAt(0).toUpperCase() + selectedPayment.slice(1) + 'Full');
+    msg.textContent = t('checkoutSuccess').replace('{method}', methodLabel);
+    cart = [];
+    selectedPayment = null;
+    renderCart();
+    renderPaymentOptions();
+  });
+
+  document.getElementById('subForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('subNote').textContent = t('subscribedMsg');
+    e.target.reset();
+  });
+
+  var menuToggle = document.getElementById('menuToggle');
+  menuToggle.addEventListener('click', function(){
+    document.querySelector('nav.links').classList.toggle('open');
+  });
+
+  fullRender();
+})();
+</script>
+
+</body>
+</html>
